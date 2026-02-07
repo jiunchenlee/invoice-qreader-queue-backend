@@ -11,3 +11,4 @@ opencv-python-headless==4.9.0.80
 pyzbar==0.1.9
 pillow==10.2.0
 python-multipart==0.0.6
+qreader==3.12
