@@ -1,11 +1,11 @@
 FROM python:3.9-slim
 
 # 安裝系統依賴 (zbar, OpenGL, glib)
-RUN apt-get update && apt-get install -y 
-    libzbar0 
-    libglx0 
-    libgl1 
-    libglib2.0-0 
+RUN apt-get update && apt-get install -y \
+    libzbar0 \
+    libglx0 \
+    libgl1 \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -20,5 +20,5 @@ COPY . .
 # 設定環境變數
 ENV PYTHONUNBUFFERED=1
 
-# 注意：我們使用 Procfile 來控制啟動，但如果單純跑 Docker，預設啟動 Web
+# 預設啟動指令 (API)
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
