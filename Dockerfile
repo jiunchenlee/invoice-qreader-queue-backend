@@ -20,5 +20,5 @@ COPY . .
 # 設定環境變數
 ENV PYTHONUNBUFFERED=1
 
-# 預設啟動指令 (API)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# 預設啟動指令 (API) - 使用 sh -c 確保 $PORT 變數能被正確解析
+CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
